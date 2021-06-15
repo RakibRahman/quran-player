@@ -4,36 +4,48 @@
 @tailwind utilities;
 
 .app {
-  @apply font-quickSand leading-8 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
+  @apply leading-8 font-quickSand bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
 }
-
+.thumbnail {
+  @apply object-cover rounded-full w-96 h-96;
+}
+.player {
+  @apply flex items-center justify-around h-screen;
+}
+.tracker {
+  @apply fixed top-0 left-0 w-full transition duration-75 ease-in bg-black;
+}
 /* Button */
 .playButton {
-  @apply px-6
-    py-2
-    transition
-    ease-in-out
-    duration-500
-    outline-none
-    rounded-xl
-    border
-    transform
-    opacity-90
-    hover:scale-105
-    hover:opacity-100;
+  @apply px-6 py-2 transition duration-500 ease-in-out transform border outline-none rounded-xl opacity-90 hover:scale-105 hover:opacity-100;
 }
 .is-green {
-  @apply bg-green-400 text-red-500;
+  @apply text-red-500 bg-green-400;
 }
 .playlist {
   @apply w-80;
 }
 .playlist__surah {
-  @apply w-full border border-red-400 flex  justify-between;
+  @apply flex justify-between w-full px-2 py-1 border border-red-400 hover:bg-blue-100;
 }
+.playlist__surah--active {
+  @apply text-green-500 bg-black;
+}
+.playlist__surah--active div {
+  color: inherit;
+}
+
 .play-pause {
   @apply mr-4;
 }
 .playlist__surah-details {
   @apply mr-auto;
+}
+.cover {
+  animation: spin 5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 10s infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
