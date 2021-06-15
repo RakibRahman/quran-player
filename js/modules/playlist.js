@@ -1,6 +1,91 @@
+import { surahList } from "../data/surahs.js";
+
 const Playlist = ((_) => {
+  let surahs = surahList;
+  let currentPlayingIndex = 0;
+  let currentSurah = new Audio(surahs[currentPlayingIndex].url);
+  let isPlaying = false;
+
+  //initialize the dom
+
+  const playlistEl = document.querySelector(".playlist");
+  const totalSurahEl = document.querySelector(".player__count");
+
   const init = (_) => {
-    console.log("working ok");
+    render();
+    listeners();
+  };
+
+  const changeAudioSrc = (_) => {
+    currentSurah.src = surahs[currentPlayingIndex].url; //change audio src to current index
+  };
+
+  //toggle play pause
+
+  const playPauseToggle = (_) => {
+    return currentSurah.paused ? currentSurah.play() : currentSurah.pause();
+  };
+
+  const mainPlay = (clickedIndex) => {
+    if (currentPlayingIndex === clickedIndex) {
+      console.log("same index");
+      playPauseToggle();
+    } else {
+      console.log("new index");
+      currentPlayingIndex = clickedIndex;
+      changeAudioSrc();
+      playPauseToggle();
+    }
+  };
+
+  //! listeners
+  const listeners = (_) => {
+    playlistEl.addEventListener("click", (e) => {
+      if (e.target && e.target.matches(".pp-icon")) {
+        const listElem = e.target.parentNode.parentNode; //get the li tag
+        const listElemIndex = [...listElem.parentElement.children].indexOf(
+          listElem
+        );
+        mainPlay(listElemIndex);
+        render();
+      }
+    });
+  };
+
+  const render = (_) => {
+    let markup = "";
+
+    //! toggle play/pause Icon
+
+    const toggleIcon = (itemIndex) => {
+      if (currentPlayingIndex === itemIndex) {
+        return currentSurah.paused ? "fa-play" : "fa-pause";
+      }
+      return "fa-play";
+    };
+
+    surahs.forEach((surah, index) => {
+      markup += `
+        
+      <li class="playlist__surah ${
+        index === currentPlayingIndex ? "playlist__surah--active" : ""
+      }">
+      <div class="play-pause">
+        <i class="fa ${toggleIcon(index)} pp-icon"></i>
+      </div>
+      <div class="playlist__surah-details">
+        <span class="playlist__surah-title">${surah.title}</span>
+        <br />
+        <span class="playlist__surah-reciter">${surah.reciter}</span>
+      </div>
+      <div class="playlist__surah-duration">${surah.time}</div>
+    </li>
+        
+        
+        `;
+    });
+    playlistEl.innerHTML = markup;
+    totalSurahEl.innerHTML = surahs.length;
   };
   return {
     init,
