@@ -1,6 +1,7 @@
 export const surahList = [
   {
     id: "1",
+    pic: "../../public/img/surah-araf.png",
     url: "../../public/surah/Al-A'raf.mp3",
     time: "04:19",
     title: "Surah Al-A'raf",
@@ -8,6 +9,7 @@ export const surahList = [
   },
   {
     id: "2",
+    pic: "../../public/img/surah-al-buruj.jpg",
     url: "../../public/surah/Al-Buruj.mp3",
     time: "03:20",
     title: "Surah Al-Buruj",
@@ -15,6 +17,7 @@ export const surahList = [
   },
   {
     id: "3",
+    pic: "../../public/img/surah-al-ghashiya.jpg",
     url: "../../public/surah/Al-Gashiya.mp3",
     time: "02:42",
     title: "Surah Al-Gashiya",
@@ -22,6 +25,7 @@ export const surahList = [
   },
   {
     id: "4",
+    pic: "../../public/img/surah-al-haqqah.jpg",
     url: "../../public/surah/Al-Haqqah.mp3",
     time: "08:11",
     title: "Surah Al-Haqqah",
@@ -29,6 +33,7 @@ export const surahList = [
   },
   {
     id: "5",
+    pic: "../../public/img/surah-al-muminun.jpg",
     url: "../../public/surah/Al-Mu'minun.mp3",
     time: "11:18",
     title: "Surah Al Mu'minun",
@@ -36,6 +41,7 @@ export const surahList = [
   },
   {
     id: "6",
+    pic: "../../public/img/surah-ibrahim.png"
     url: "../../public/surah/Ibrahim.mp3",
     time: "04:48",
     title: "Surah Ibrahim",

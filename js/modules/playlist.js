@@ -5,11 +5,14 @@ const Playlist = ((_) => {
   let currentPlayingIndex = 0;
   let currentSurah = new Audio(surahs[currentPlayingIndex].url);
   let isPlaying = false;
-
+  // currentSurah.currentTime = 255;
   //initialize the dom
 
   const playlistEl = document.querySelector(".playlist");
   const totalSurahEl = document.querySelector(".player__count");
+  const playNextSurah = document.querySelector(".playNext");
+  const playPrevSurah = document.querySelector(".playPrev");
+  const playPauseBtn = document.querySelector(".playButton");
 
   const init = (_) => {
     render();
@@ -24,6 +27,18 @@ const Playlist = ((_) => {
 
   const playPauseToggle = (_) => {
     return currentSurah.paused ? currentSurah.play() : currentSurah.pause();
+    //play if paused
+    //pause if playing
+  };
+  //automatically play next audio
+
+  const playNextAuto = (_) => {
+    if (surahs[currentPlayingIndex] + 1) {
+      currentPlayingIndex++;
+      changeAudioSrc();
+      playPauseToggle();
+      render();
+    }
   };
 
   const mainPlay = (clickedIndex) => {
@@ -50,6 +65,45 @@ const Playlist = ((_) => {
         render();
       }
     });
+    //play next audio
+    playNextSurah.addEventListener("click", (_) => {
+      currentPlayingIndex++;
+
+      if (currentPlayingIndex > surahs.length - 1) {
+        currentPlayingIndex = 0;
+      }
+      changeAudioSrc();
+      playPauseToggle();
+      render();
+    });
+
+    //play prev audio
+    playPrevSurah.addEventListener("click", (_) => {
+      if (currentPlayingIndex === 0) return false;
+      if (currentPlayingIndex <= surahs.length - 1) {
+        currentPlayingIndex--;
+        changeAudioSrc();
+        playPauseToggle();
+        render();
+      }
+    });
+
+    //auto play next audio
+    currentSurah.addEventListener("ended", () => {
+      playNextAuto();
+    });
+    //play pause audio
+    playPauseBtn /
+      addEventListener("click", (_) => {
+        playPauseToggle();
+        render();
+        if (playPauseBtn.innerText === "Play") {
+          playPauseBtn.innerText = "Pause";
+        } else {
+          playPauseBtn.innerText = "Play";
+        }
+        console.log(currentSurah.duration);
+      });
   };
 
   const render = (_) => {
