@@ -1,0 +1,16 @@
+{
+  "name": "quran-player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "tailwind build src/style.css -o public/css/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.2.6",
+    "tailwindcss": "^2.1.4"
+  }
+}
