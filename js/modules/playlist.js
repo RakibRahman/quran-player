@@ -4,6 +4,7 @@ const Playlist = ((_) => {
   let surahs = surahList;
   let currentPlayingIndex = 0;
   let currentSurah = new Audio(surahs[currentPlayingIndex].url);
+  let currentCover = surahs[currentPlayingIndex].pic;
   let isPlaying = false;
   // currentSurah.currentTime = 255;
   //initialize the dom
@@ -13,6 +14,7 @@ const Playlist = ((_) => {
   const playNextSurah = document.querySelector(".playNext");
   const playPrevSurah = document.querySelector(".playPrev");
   const playPauseBtn = document.querySelector(".playButton");
+  const thumbnail = document.querySelector(".thumbnail");
 
   const init = (_) => {
     render();
@@ -21,6 +23,9 @@ const Playlist = ((_) => {
 
   const changeAudioSrc = (_) => {
     currentSurah.src = surahs[currentPlayingIndex].url; //change audio src to current index
+
+    //change thumbnail src to current index
+    thumbnail.src = surahs[currentPlayingIndex].pic;
   };
 
   //toggle play pause
@@ -75,6 +80,7 @@ const Playlist = ((_) => {
       changeAudioSrc();
       playPauseToggle();
       render();
+      playPauseBtn.innerHTML = "Pause";
     });
 
     //play prev audio
@@ -86,6 +92,7 @@ const Playlist = ((_) => {
         playPauseToggle();
         render();
       }
+      playPauseBtn.innerHTML = "Pause";
     });
 
     //auto play next audio
@@ -93,17 +100,23 @@ const Playlist = ((_) => {
       playNextAuto();
     });
     //play pause audio
-    playPauseBtn /
-      addEventListener("click", (_) => {
-        playPauseToggle();
-        render();
-        if (playPauseBtn.innerText === "Play") {
-          playPauseBtn.innerText = "Pause";
-        } else {
-          playPauseBtn.innerText = "Play";
-        }
-        console.log(currentSurah.duration);
-      });
+    playPauseBtn.addEventListener("click", (_) => {
+      playPauseToggle();
+      render();
+      if (playPauseBtn.innerText === "Play" && !currentSurah.paused) {
+        playPauseBtn.innerText = "Pause";
+      } else {
+        playPauseBtn.innerText = "Play";
+      }
+    });
+
+    //cover animation hover control
+    thumbnail.addEventListener("mouseover", () => {
+      thumbnail.classList.toggle("cover");
+    });
+    thumbnail.addEventListener("mouseout", () => {
+      thumbnail.classList.toggle("cover");
+    });
   };
 
   const render = (_) => {
@@ -139,7 +152,7 @@ const Playlist = ((_) => {
         `;
     });
     playlistEl.innerHTML = markup;
-    totalSurahEl.innerHTML = surahs.length;
+    totalSurahEl.innerHTML = `${surahs.length} Surah`;
   };
   return {
     init,

@@ -41,7 +41,7 @@ export const surahList = [
   },
   {
     id: "6",
-    pic: "../../public/img/surah-ibrahim.png"
+    pic: "../../public/img/surah-ibrahim.png",
     url: "../../public/surah/Ibrahim.mp3",
     time: "04:48",
     title: "Surah Ibrahim",
