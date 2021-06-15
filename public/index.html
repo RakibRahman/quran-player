@@ -6,9 +6,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quran Player</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
   </head>
   <body>
-    <h1 class="bg-green-400">WOk</h1>
+    <main class="app text-white h-full">
+      <div class="wrapper">
+        <div
+          class="
+            trackbar
+            fixed
+            top-0
+            left-0
+            w-full
+            bg-black
+            transition
+            ease-in
+            duration-75
+          "
+        >
+          <div class="trackbar__progress w-0.5 h-2 bg-green-500"></div>
+        </div>
+        <div class="player flex justify-around items-center h-screen">
+          <div class="player__header">
+            <div class="player__thumbnail grid place-items-center">
+              <img
+                class="rounded-xl w-4/5 h-auto"
+                src="img/syed-aoun-abbas-OeR_22huK9g-unsplash.jpg"
+                alt="thumbnail"
+              />
+
+              <h1 class="player__name">Quran Player</h1>
+              <p class="player__count">114</p>
+
+              <button class="playButton">Play</button>
+            </div>
+          </div>
+          <div class="player__body">
+            <ul class="playlist overflow-auto h-80">
+              <li class="playlist__surah">
+                <div class="play-pause">
+                  <i class="fa fa-play pp-icon"></i>
+                </div>
+                <div class="playlist__surah-details">
+                  <span class="playlist__surah-title">Surah Fatiha</span>
+                  <br />
+                  <span class="playlist__surah-reciter">AL AMin</span>
+                </div>
+                <div class="playlist__surah-duration">03.2</div>
+              </li>
+              <li class="playlist__surah">
+                <div class="play-pause">
+                  <i class="fa fa-play pp-icon"></i>
+                </div>
+                <div class="playlist__surah-details">
+                  <span class="playlist__surah-title">Surah Fatiha</span>
+                  <br />
+                  <span class="playlist__surah-reciter">AL AMin</span>
+                </div>
+                <div class="playlist__surah-duration">03.2</div>
+              </li>
+              <li class="playlist__surah">
+                <div class="play-pause">
+                  <i class="fa fa-play pp-icon"></i>
+                </div>
+                <div class="playlist__surah-details">
+                  <span class="playlist__surah-title">Surah Fatiha</span>
+                  <br />
+                  <span class="playlist__surah-reciter">AL AMin</span>
+                </div>
+                <div class="playlist__surah-duration">03.2</div>
+              </li>
+              <li class="playlist__surah">
+                <div class="play-pause">
+                  <i class="fa fa-play pp-icon"></i>
+                </div>
+                <div class="playlist__surah-details">
+                  <span class="playlist__surah-title">Surah Fatiha</span>
+                  <br />
+                  <span class="playlist__surah-reciter">AL AMin</span>
+                </div>
+                <div class="playlist__surah-duration">03.2</div>
+              </li>
+              <li class="playlist__surah">
+                <div class="play-pause">
+                  <i class="fa fa-play pp-icon"></i>
+                </div>
+                <div class="playlist__surah-details">
+                  <span class="playlist__surah-title">Surah Fatiha</span>
+                  <br />
+                  <span class="playlist__surah-reciter">AL AMin</span>
+                </div>
+                <div class="playlist__surah-duration">03.2</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="app.js"></script>
   </body>
 </html>
