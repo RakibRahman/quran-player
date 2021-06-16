@@ -180,7 +180,7 @@ const Playlist = ((_) => {
       <div class="playlist__surah-details">
         <span class="playlist__surah-title">${surah.title}</span>
         <br />
-        <span class="playlist__surah-reciter">${surah.reciter}</span>
+        <span class="playlist__surah-reciter text-lg">${surah.reciter}</span>
       </div>
       <div class="playlist__surah-duration">${surah.time}</div>
     </li>
