@@ -115,8 +115,7 @@ const Playlist = ((_) => {
 
     //!tracker event
     currentSurah.addEventListener("timeupdate", (_) => {
-      // console.log(currentSurah.duration);
-      console.log(currentSurah.currentTime);
+      TrackBar.setState(currentSurah);
     });
 
     const playInfoUpdate = (_) => {
@@ -135,7 +134,6 @@ const Playlist = ((_) => {
 
     //! keyboard controls
     window.addEventListener("keyup", (e) => {
-      console.log(e.key);
       playInfoUpdate();
       if (e.key === " ") {
         playPauseToggle();

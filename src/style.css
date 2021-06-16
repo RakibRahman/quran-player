@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 .app {
-  @apply leading-8 font-quickSand bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
+  @apply text-xl leading-8 font-quickSand bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500;
 }
 .thumbnail {
   @apply object-cover rounded-full w-96 h-96;
@@ -12,12 +12,12 @@
 .player {
   @apply flex items-center justify-around h-screen;
 }
-.tracker {
-  @apply fixed top-0 left-0 w-full transition duration-75 ease-in bg-black;
+.trackbar {
+  @apply w-full transition duration-75 ease-in bg-gray-500;
 }
 /* Button */
 .playButton {
-  @apply px-6 py-2 transition duration-500 ease-in-out transform border outline-none rounded-xl opacity-90 hover:scale-105 hover:opacity-100;
+  @apply px-4 py-2 transition duration-500 ease-in-out transform outline-none rounded-xl opacity-90 hover:scale-105 hover:opacity-100;
 }
 .is-green {
   @apply text-red-500 bg-green-400;
@@ -26,7 +26,7 @@
   @apply w-80;
 }
 .playlist__surah {
-  @apply flex justify-between w-full px-2 py-1 border border-red-400 hover:bg-blue-100;
+  @apply flex justify-between w-full px-2 py-1 border border-red-400 cursor-pointer hover:bg-green-300 hover:text-white;
 }
 .playlist__surah--active {
   @apply text-green-500 bg-black;
@@ -48,4 +48,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Tracker */
+.trackbar__progress {
+  width: 0%;
 }

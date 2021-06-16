@@ -14,11 +14,13 @@ const TrackBar = ((_) => {
   };
   const getPercentage = (current, full) => {
     return (current / full) * 100;
+    // currentTime/Duration *100
   };
   const setState = (obj) => {
     state.currentTrackTime = obj.currentTime;
     state.fullTrackTime = obj.duration;
     state.barWidth = getPercentage(state.currentTrackTime, state.fullTrackTime);
+    render();
   };
   return {
     init,

@@ -14,31 +14,34 @@
   <body>
     <main class="h-full text-white app">
       <div class="wrapper">
-        <div class="trackbar">
-          <div class="trackbar__progress w-0.5 h-2 bg-green-500"></div>
-        </div>
         <div class="player">
           <div class="player__header">
-            <div class="grid border player__thumbnail place-items-center">
-              <div class="border w-96 h-96">
+            <div
+              class="grid border  rounded-xl player__thumbnail place-items-center"
+            >
+              <div class="w-96 h-96">
                 <img
                   class="thumbnail cover"
                   src="img/surah-araf.png"
                   alt="thumbnail"
                 />
               </div>
-
+              <div class="my-2 trackbar">
+                <div class="h-2 bg-green-500 trackbar__progress"></div>
+              </div>
               <h1 class="player__name">Quran Player</h1>
               <p class="player__count">114</p>
 
-              <div class="space-x-2 controls">
-                <button class="playPrev">Prev</button>
-                <button class="playButton">Play</button>
-                <button class="playNext">Next</button>
+              <div class="py-2 space-x-2 controls">
+                <button class="playPrev hover:text-green-500">Prev</button>
+                <button class="border playButton hover:text-green-500">
+                  Play
+                </button>
+                <button class="playNext hover:text-green-500">Next</button>
               </div>
             </div>
           </div>
-          <div class="player__body">
+          <div class="w-full border player__body">
             <p>Playlist</p>
             <p></p>
             <ul class="overflow-auto playlist h-96"></ul>
