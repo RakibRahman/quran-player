@@ -1,5 +1,5 @@
 import { surahList } from "../data/surahs.js";
-
+import TrackBar from "./tracker.js";
 const Playlist = ((_) => {
   let surahs = surahList;
   let currentPlayingIndex = 0;
@@ -45,19 +45,22 @@ const Playlist = ((_) => {
       render();
     }
   };
+  const playStatus = (_) => {
+    //Toggle play/pause state on icon click
 
+    currentSurah.paused
+      ? (playPauseBtn.innerText = "Pause")
+      : (playPauseBtn.innerText = "Play");
+  };
   const mainPlay = (clickedIndex) => {
     if (currentPlayingIndex === clickedIndex) {
-      //Toggle play/pause state on icon click
-      currentSurah.paused
-        ? (playPauseBtn.innerText = "Pause")
-        : (playPauseBtn.innerText = "Play");
-
+      playStatus();
       playPauseToggle();
     } else {
       console.log("new index");
       currentPlayingIndex = clickedIndex;
       changeAudioSrc();
+      playStatus();
       playPauseToggle();
     }
   };
@@ -75,8 +78,8 @@ const Playlist = ((_) => {
         render();
       }
     });
-    //play next audio
-    playNextSurah.addEventListener("click", (_) => {
+    //! play next audio
+    const playNext = (_) => {
       currentPlayingIndex++;
 
       if (currentPlayingIndex > surahs.length - 1) {
@@ -86,10 +89,9 @@ const Playlist = ((_) => {
       playPauseToggle();
       render();
       playPauseBtn.innerHTML = "Pause";
-    });
-
-    //play prev audio
-    playPrevSurah.addEventListener("click", (_) => {
+    };
+    //! play prev audio
+    const playPrev = (_) => {
       if (currentPlayingIndex === 0) return false;
       if (currentPlayingIndex <= surahs.length - 1) {
         currentPlayingIndex--;
@@ -98,22 +100,52 @@ const Playlist = ((_) => {
         render();
       }
       playPauseBtn.innerHTML = "Pause";
+    };
+    playNextSurah.addEventListener("click", (_) => {
+      playNext();
+    });
+    playPrevSurah.addEventListener("click", (_) => {
+      playPrev();
     });
 
     //auto play next audio
     currentSurah.addEventListener("ended", () => {
       playNextAuto();
     });
-    //play pause audio
 
-    playPauseBtn.addEventListener("click", (_) => {
-      playPauseToggle();
-      render();
+    //!tracker event
+    currentSurah.addEventListener("timeupdate", (_) => {
+      // console.log(currentSurah.duration);
+      console.log(currentSurah.currentTime);
+    });
 
+    const playInfoUpdate = (_) => {
       if (playPauseBtn.innerText === "Play") {
         playPauseBtn.innerText = "Pause";
       } else {
         playPauseBtn.innerText = "Play";
+      }
+    };
+    //play pause audio
+    playPauseBtn.addEventListener("click", (_) => {
+      playPauseToggle();
+      render();
+      playInfoUpdate();
+    });
+
+    //! keyboard controls
+    window.addEventListener("keyup", (e) => {
+      console.log(e.key);
+      playInfoUpdate();
+      if (e.key === " ") {
+        playPauseToggle();
+        render();
+      }
+      if (e.key === "p") {
+        playPrev();
+      }
+      if (e.key === "n") {
+        playNext();
       }
     });
 
