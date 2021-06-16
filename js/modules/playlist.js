@@ -48,7 +48,11 @@ const Playlist = ((_) => {
 
   const mainPlay = (clickedIndex) => {
     if (currentPlayingIndex === clickedIndex) {
-      console.log("same index");
+      //Toggle play/pause state on icon click
+      currentSurah.paused
+        ? (playPauseBtn.innerText = "Pause")
+        : (playPauseBtn.innerText = "Play");
+
       playPauseToggle();
     } else {
       console.log("new index");
@@ -67,6 +71,7 @@ const Playlist = ((_) => {
           listElem
         );
         mainPlay(listElemIndex);
+
         render();
       }
     });
@@ -100,10 +105,12 @@ const Playlist = ((_) => {
       playNextAuto();
     });
     //play pause audio
+
     playPauseBtn.addEventListener("click", (_) => {
       playPauseToggle();
       render();
-      if (playPauseBtn.innerText === "Play" && !currentSurah.paused) {
+
+      if (playPauseBtn.innerText === "Play") {
         playPauseBtn.innerText = "Pause";
       } else {
         playPauseBtn.innerText = "Play";
