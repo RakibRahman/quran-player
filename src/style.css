@@ -54,3 +54,6 @@
 .trackbar__progress {
   width: 0%;
 }
+button {
+  outline: none;
+}
