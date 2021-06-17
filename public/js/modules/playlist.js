@@ -58,7 +58,6 @@ const Playlist = ((_) => {
       playStatus();
       playPauseToggle();
     } else {
-      console.log("new index");
       currentPlayingIndex = clickedIndex;
       changeAudioSrc();
       playStatus();
@@ -138,8 +137,10 @@ const Playlist = ((_) => {
     //! Shuffle Button
     shuffle.addEventListener("click", (_) => {
       shuffleSurah();
+      changeAudioSrc();
+      playPauseToggle();
+      playInfoUpdate();
       render();
-      thumbnail.src = surahs[currentPlayingIndex].pic;
     });
 
     //! Keyboard Controls
