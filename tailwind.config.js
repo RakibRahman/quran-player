@@ -5,7 +5,13 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        72: "18rem",
+        84: "21rem",
+        96: "28rem",
+      },
+    },
     fontFamily: {
       quickSand: ["Quicksand", "sans-serif"],
     },

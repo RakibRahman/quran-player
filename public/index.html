@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quran Player</title>
     <link rel="stylesheet" href="css/style.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -14,10 +15,10 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body>
+  <body class="bg-cover">
     <main class="h-full text-white app">
       <div class="wrapper">
-        <div class="player">
+        <div class="flex-col player xl:flex-row">
           <div class="player__header">
             <div
               class="grid border  rounded-xl player__thumbnail place-items-center"
@@ -32,22 +33,27 @@
               <div class="my-2 trackbar">
                 <div class="h-2 bg-green-500 trackbar__progress"></div>
               </div>
-              <h1 class="player__name">Quran Player</h1>
+              <h1 class="text-2xl text-gray-900 player__name">Quran Player</h1>
               <p class="player__count">114</p>
 
               <div class="py-2 space-x-2 controls">
-                <button class="playPrev hover:text-green-500">Prev</button>
-                <button class="border playButton hover:text-green-500">
+                <button class="playPrev hover:text-green-300">Prev</button>
+                <button class="border playButton hover:text-green-300">
                   Play
                 </button>
-                <button class="playNext hover:text-green-500">Next</button>
+                <button class="playNext hover:text-green-300">Next</button>
               </div>
             </div>
           </div>
-          <div class="w-full border player__body">
-            <p>Playlist</p>
-            <p></p>
-            <ul class="overflow-auto playlist h-96"></ul>
+          <div class="overflow-hidden border rounded-xl player__body">
+            <div class="playlist__header">
+              <span class="">Playlist</span>
+              <button class="shuffle">
+                <i class="fa fa-random"> </i>
+              </button>
+            </div>
+
+            <ul class="playlist"></ul>
           </div>
         </div>
       </div>
