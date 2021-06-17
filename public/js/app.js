@@ -1,4 +1,4 @@
-import Playlist from "/js/modules/playlist.js";
+import Playlist from "./modules/playlist.js";
 
 Playlist.init();
-console.log('ok')
+console.log("ok");
