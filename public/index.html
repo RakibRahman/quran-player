@@ -14,6 +14,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      rel="shortcut icon"
+      href="img/syed-aoun-abbas-OeR_22huK9g-unsplash.jpg"
+      type="image/x-icon"
+    />
   </head>
   <body class="bg-cover">
     <main class="h-full text-white app">
@@ -36,12 +41,16 @@
               <h1 class="text-2xl text-gray-900 player__name">Quran Player</h1>
               <p class="player__count">114</p>
 
-              <div class="py-2 space-x-2 controls">
+              <div
+                class="flex items-center justify-between py-2 space-x-4  controls"
+              >
                 <button class="playPrev hover:text-green-300">Prev</button>
                 <button class="border playButton hover:text-green-300">
                   Play
                 </button>
-                <button class="playNext hover:text-green-300">Next</button>
+                <button class="ml-4 playNext hover:text-green-300">Next</button>
+                <input type="range" name="audioVolume" min="0" max="100" />
+                <button class="mute">🔊</button>
               </div>
             </div>
           </div>
