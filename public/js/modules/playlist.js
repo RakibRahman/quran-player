@@ -4,10 +4,6 @@ const Playlist = ((_) => {
   let surahs = surahList;
   let currentPlayingIndex = 0;
   let currentSurah = new Audio(surahs[currentPlayingIndex].url);
-  let currentCover = surahs[currentPlayingIndex].pic;
-  let isPlaying = false;
-  // currentSurah.currentTime = 255;
-  //initialize the dom
 
   const playlistEl = document.querySelector(".playlist");
   const totalSurahEl = document.querySelector(".player__count");
@@ -15,6 +11,11 @@ const Playlist = ((_) => {
   const playPrevSurah = document.querySelector(".playPrev");
   const playPauseBtn = document.querySelector(".playButton");
   const thumbnail = document.querySelector(".thumbnail");
+  const shuffle = document.querySelector(".shuffle");
+
+  const shuffleSurah = (_) => {
+    surahs.sort((a, b) => 0.5 - Math.random());
+  };
 
   const init = (_) => {
     render();
@@ -108,16 +109,17 @@ const Playlist = ((_) => {
       playPrev();
     });
 
-    //auto play next audio
+    //! Auto Play Next Audio
     currentSurah.addEventListener("ended", () => {
       playNextAuto();
     });
 
-    //!tracker event
+    //! Tracker Event
     currentSurah.addEventListener("timeupdate", (_) => {
       TrackBar.setState(currentSurah);
     });
 
+    //! PlayPause Button Text Update
     const playInfoUpdate = (_) => {
       if (playPauseBtn.innerText === "Play") {
         playPauseBtn.innerText = "Pause";
@@ -125,14 +127,22 @@ const Playlist = ((_) => {
         playPauseBtn.innerText = "Play";
       }
     };
-    //play pause audio
+
+    //! Play Pause Audio
     playPauseBtn.addEventListener("click", (_) => {
       playPauseToggle();
       render();
       playInfoUpdate();
     });
 
-    //! keyboard controls
+    //! Shuffle Button
+    shuffle.addEventListener("click", (_) => {
+      shuffleSurah();
+      render();
+      thumbnail.src = surahs[currentPlayingIndex].pic;
+    });
+
+    //! Keyboard Controls
     window.addEventListener("keyup", (e) => {
       playInfoUpdate();
       if (e.key === " ") {
@@ -147,7 +157,7 @@ const Playlist = ((_) => {
       }
     });
 
-    //cover animation hover control
+    //! Cover Animation Hover Control
     thumbnail.addEventListener("mouseover", () => {
       thumbnail.classList.toggle("cover");
     });
@@ -180,7 +190,7 @@ const Playlist = ((_) => {
       <div class="playlist__surah-details">
         <span class="playlist__surah-title">${surah.title}</span>
         <br />
-        <span class="playlist__surah-reciter text-lg">${surah.reciter}</span>
+        <span class="playlist__surah-reciter text-sm">${surah.reciter}</span>
       </div>
       <div class="playlist__surah-duration">${surah.time}</div>
     </li>
