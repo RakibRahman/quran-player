@@ -14,6 +14,8 @@ const Playlist = ((_) => {
   const shuffle = document.querySelector(".shuffle");
   const mute = document.querySelector(".mute");
   const volumeLevel = document.querySelector("input[name=audioVolume]");
+  const info = document.querySelector(".info");
+  const manual = document.querySelector(".manual");
 
   const shuffleSurah = (_) => {
     surahs.sort((a, b) => 0.5 - Math.random());
@@ -188,6 +190,10 @@ const Playlist = ((_) => {
     });
     thumbnail.addEventListener("mouseout", () => {
       thumbnail.classList.toggle("cover");
+    });
+    //Toggle info
+    info.addEventListener("click", () => {
+      manual.classList.toggle("hidden");
     });
   };
 
