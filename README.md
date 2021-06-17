@@ -13,4 +13,4 @@
 
 ## Screenshot:
 
-![screenshot](./public/img/Quran-PLayer.png)
+![screenshot](/public/img/Quran-Player.png)
