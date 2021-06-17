@@ -12,6 +12,8 @@ const Playlist = ((_) => {
   const playPauseBtn = document.querySelector(".playButton");
   const thumbnail = document.querySelector(".thumbnail");
   const shuffle = document.querySelector(".shuffle");
+  const mute = document.querySelector(".mute");
+  const volumeLevel = document.querySelector("input[name=audioVolume]");
 
   const shuffleSurah = (_) => {
     surahs.sort((a, b) => 0.5 - Math.random());
@@ -112,6 +114,14 @@ const Playlist = ((_) => {
     currentSurah.addEventListener("ended", () => {
       playNextAuto();
     });
+    //! Shuffle Play
+    const shufflePlay = (_) => {
+      shuffleSurah();
+      changeAudioSrc();
+      playPauseToggle();
+      render();
+      playPauseBtn.innerText = "Pause";
+    };
 
     //! Tracker Event
     currentSurah.addEventListener("timeupdate", (_) => {
@@ -136,13 +146,7 @@ const Playlist = ((_) => {
 
     //! Shuffle Button
     shuffle.addEventListener("click", (_) => {
-      shuffleSurah();
-      changeAudioSrc();
-      playPauseToggle();
-      // playInfoUpdate();
-      render();
-
-      playPauseBtn.innerText = "Pause";
+      shufflePlay();
     });
 
     //! Keyboard Controls
@@ -157,6 +161,24 @@ const Playlist = ((_) => {
       }
       if (e.key === "n") {
         playNext();
+      }
+      if (e.key === "s") {
+        shufflePlay();
+      }
+    });
+    //! volume controller
+    volumeLevel.addEventListener("change", () => {
+      currentSurah.volume = volumeLevel.value / 100;
+    });
+
+    //!Mute
+    mute.addEventListener("click", (_) => {
+      if (currentSurah.volume > 0) {
+        currentSurah.volume = 0;
+        mute.innerText = "🔇";
+      } else {
+        currentSurah.volume = 1;
+        mute.innerText = "🔊";
       }
     });
 
