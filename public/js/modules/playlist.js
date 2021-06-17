@@ -1,5 +1,5 @@
 import { surahList } from "../data/surahs.js";
-import TrackBar from "../modules/tracker.js";
+import TrackBar from "./tracker.js";
 const Playlist = ((_) => {
   let surahs = surahList;
   let currentPlayingIndex = 0;
