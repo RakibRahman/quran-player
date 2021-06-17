@@ -139,8 +139,10 @@ const Playlist = ((_) => {
       shuffleSurah();
       changeAudioSrc();
       playPauseToggle();
-      playInfoUpdate();
+      // playInfoUpdate();
       render();
+
+      playPauseBtn.innerText = "Pause";
     });
 
     //! Keyboard Controls
