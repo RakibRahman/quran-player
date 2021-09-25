@@ -10,6 +10,7 @@
 - Volume Rocker
 - Mute
 - Thumbnail
+- Keyboard Controls
 
 ## Screenshot:
 
